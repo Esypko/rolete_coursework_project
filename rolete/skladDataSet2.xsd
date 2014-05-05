@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="skladDataSet2" targetNamespace="http://tempuri.org/skladDataSet2.xsd" xmlns:mstns="http://tempuri.org/skladDataSet2.xsd" xmlns="http://tempuri.org/skladDataSet2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="skladConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="skladConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.rolete.Properties.Settings.GlobalReference.Default.skladConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ViewFeathersTableAdapter" GeneratorDataComponentClassName="ViewFeathersTableAdapter" Name="ViewFeathers" UserDataComponentName="ViewFeathersTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="skladConnectionString (Settings)" DbObjectName="dbo.ViewFeathers" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Id, feathers, metr, color, price FROM dbo.ViewFeathers</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="feathers" DataSetColumn="feathers" />
+              <Mapping SourceColumn="metr" DataSetColumn="metr" />
+              <Mapping SourceColumn="color" DataSetColumn="color" />
+              <Mapping SourceColumn="price" DataSetColumn="price" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ViewMechanismTableAdapter" GeneratorDataComponentClassName="ViewMechanismTableAdapter" Name="ViewMechanism" UserDataComponentName="ViewMechanismTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="skladConnectionString (Settings)" DbObjectName="dbo.ViewMechanism" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Id, mechanism, count, lenght, price FROM dbo.ViewMechanism</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="mechanism" DataSetColumn="mechanism" />
+              <Mapping SourceColumn="count" DataSetColumn="count" />
+              <Mapping SourceColumn="lenght" DataSetColumn="lenght" />
+              <Mapping SourceColumn="price" DataSetColumn="price" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ViewMotTableAdapter" GeneratorDataComponentClassName="ViewMotTableAdapter" Name="ViewMot" UserDataComponentName="ViewMotTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="skladConnectionString (Settings)" DbObjectName="dbo.ViewMot" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Id, Name, count, price FROM dbo.ViewMot</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="count" DataSetColumn="count" />
+              <Mapping SourceColumn="price" DataSetColumn="price" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ViewProfilTableAdapter" GeneratorDataComponentClassName="ViewProfilTableAdapter" Name="ViewProfil" UserDataComponentName="ViewProfilTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="skladConnectionString (Settings)" DbObjectName="dbo.ViewProfil" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Id, profil, metr, color, price FROM dbo.ViewProfil</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="profil" DataSetColumn="profil" />
+              <Mapping SourceColumn="metr" DataSetColumn="metr" />
+              <Mapping SourceColumn="color" DataSetColumn="color" />
+              <Mapping SourceColumn="price" DataSetColumn="price" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="skladDataSet2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="skladDataSet2" msprop:Generator_UserDSName="skladDataSet2">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ViewFeathers" msprop:Generator_TableClassName="ViewFeathersDataTable" msprop:Generator_TableVarName="tableViewFeathers" msprop:Generator_TablePropName="ViewFeathers" msprop:Generator_RowDeletingName="ViewFeathersRowDeleting" msprop:Generator_RowChangingName="ViewFeathersRowChanging" msprop:Generator_RowEvHandlerName="ViewFeathersRowChangeEventHandler" msprop:Generator_RowDeletedName="ViewFeathersRowDeleted" msprop:Generator_UserTableName="ViewFeathers" msprop:Generator_RowChangedName="ViewFeathersRowChanged" msprop:Generator_RowEvArgName="ViewFeathersRowChangeEvent" msprop:Generator_RowClassName="ViewFeathersRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="feathers" msprop:Generator_ColumnVarNameInTable="columnfeathers" msprop:Generator_ColumnPropNameInRow="feathers" msprop:Generator_ColumnPropNameInTable="feathersColumn" msprop:Generator_UserColumnName="feathers" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="metr" msprop:Generator_ColumnVarNameInTable="columnmetr" msprop:Generator_ColumnPropNameInRow="metr" msprop:Generator_ColumnPropNameInTable="metrColumn" msprop:Generator_UserColumnName="metr" type="xs:double" minOccurs="0" />
+              <xs:element name="color" msprop:Generator_ColumnVarNameInTable="columncolor" msprop:Generator_ColumnPropNameInRow="color" msprop:Generator_ColumnPropNameInTable="colorColumn" msprop:Generator_UserColumnName="color">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="price" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_UserColumnName="price">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ViewMechanism" msprop:Generator_TableClassName="ViewMechanismDataTable" msprop:Generator_TableVarName="tableViewMechanism" msprop:Generator_TablePropName="ViewMechanism" msprop:Generator_RowDeletingName="ViewMechanismRowDeleting" msprop:Generator_RowChangingName="ViewMechanismRowChanging" msprop:Generator_RowEvHandlerName="ViewMechanismRowChangeEventHandler" msprop:Generator_RowDeletedName="ViewMechanismRowDeleted" msprop:Generator_UserTableName="ViewMechanism" msprop:Generator_RowChangedName="ViewMechanismRowChanged" msprop:Generator_RowEvArgName="ViewMechanismRowChangeEvent" msprop:Generator_RowClassName="ViewMechanismRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="mechanism" msprop:Generator_ColumnVarNameInTable="columnmechanism" msprop:Generator_ColumnPropNameInRow="mechanism" msprop:Generator_ColumnPropNameInTable="mechanismColumn" msprop:Generator_UserColumnName="mechanism" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="count" msprop:Generator_ColumnVarNameInTable="columncount" msprop:Generator_ColumnPropNameInRow="count" msprop:Generator_ColumnPropNameInTable="countColumn" msprop:Generator_UserColumnName="count" type="xs:int" minOccurs="0" />
+              <xs:element name="lenght" msprop:Generator_ColumnVarNameInTable="columnlenght" msprop:Generator_ColumnPropNameInRow="lenght" msprop:Generator_ColumnPropNameInTable="lenghtColumn" msprop:Generator_UserColumnName="lenght" type="xs:double" minOccurs="0" />
+              <xs:element name="price" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_UserColumnName="price" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ViewMot" msprop:Generator_TableClassName="ViewMotDataTable" msprop:Generator_TableVarName="tableViewMot" msprop:Generator_TablePropName="ViewMot" msprop:Generator_RowDeletingName="ViewMotRowDeleting" msprop:Generator_RowChangingName="ViewMotRowChanging" msprop:Generator_RowEvHandlerName="ViewMotRowChangeEventHandler" msprop:Generator_RowDeletedName="ViewMotRowDeleted" msprop:Generator_UserTableName="ViewMot" msprop:Generator_RowChangedName="ViewMotRowChanged" msprop:Generator_RowEvArgName="ViewMotRowChangeEvent" msprop:Generator_RowClassName="ViewMotRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="count" msprop:Generator_ColumnVarNameInTable="columncount" msprop:Generator_ColumnPropNameInRow="count" msprop:Generator_ColumnPropNameInTable="countColumn" msprop:Generator_UserColumnName="count" type="xs:int" minOccurs="0" />
+              <xs:element name="price" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_UserColumnName="price" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ViewProfil" msprop:Generator_TableClassName="ViewProfilDataTable" msprop:Generator_TableVarName="tableViewProfil" msprop:Generator_TablePropName="ViewProfil" msprop:Generator_RowDeletingName="ViewProfilRowDeleting" msprop:Generator_RowChangingName="ViewProfilRowChanging" msprop:Generator_RowEvHandlerName="ViewProfilRowChangeEventHandler" msprop:Generator_RowDeletedName="ViewProfilRowDeleted" msprop:Generator_UserTableName="ViewProfil" msprop:Generator_RowChangedName="ViewProfilRowChanged" msprop:Generator_RowEvArgName="ViewProfilRowChangeEvent" msprop:Generator_RowClassName="ViewProfilRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="profil" msprop:Generator_ColumnVarNameInTable="columnprofil" msprop:Generator_ColumnPropNameInRow="profil" msprop:Generator_ColumnPropNameInTable="profilColumn" msprop:Generator_UserColumnName="profil" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="metr" msprop:Generator_ColumnVarNameInTable="columnmetr" msprop:Generator_ColumnPropNameInRow="metr" msprop:Generator_ColumnPropNameInTable="metrColumn" msprop:Generator_UserColumnName="metr" type="xs:double" minOccurs="0" />
+              <xs:element name="color" msprop:Generator_ColumnVarNameInTable="columncolor" msprop:Generator_ColumnPropNameInRow="color" msprop:Generator_ColumnPropNameInTable="colorColumn" msprop:Generator_UserColumnName="color">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="price" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_UserColumnName="price" type="xs:double" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ViewFeathers" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="ViewMechanism_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ViewMechanism" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="ViewMot_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ViewMot" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="ViewProfil_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ViewProfil" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
