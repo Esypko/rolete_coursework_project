@@ -29,14 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.skladDataSet = new rolete.skladDataSet();
-            this.viewSkladBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.viewSkladTableAdapter = new rolete.skladDataSetTableAdapters.ViewSkladTableAdapter();
-            this.tableAdapterManager = new rolete.skladDataSetTableAdapters.TableAdapterManager();
-            this.skladDataSet1 = new rolete.skladDataSet1();
-            this.viewBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.viewTableAdapter = new rolete.skladDataSet1TableAdapters.ViewTableAdapter();
-            this.tableAdapterManager1 = new rolete.skladDataSet1TableAdapters.TableAdapterManager();
+            
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -51,10 +44,7 @@
             this.viewMotTableAdapter = new rolete.skladDataSet2TableAdapters.ViewMotTableAdapter();
             this.viewProfilBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.viewProfilTableAdapter = new rolete.skladDataSet2TableAdapters.ViewProfilTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.skladDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewSkladBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.skladDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewBindingSource)).BeginInit();
+           
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.skladDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewFeathersBindingSource)).BeginInit();
@@ -65,43 +55,7 @@
             // 
             // skladDataSet
             // 
-            this.skladDataSet.DataSetName = "skladDataSet";
-            this.skladDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // viewSkladBindingSource
-            // 
-            this.viewSkladBindingSource.DataMember = "ViewSklad";
-            this.viewSkladBindingSource.DataSource = this.skladDataSet;
-            // 
-            // viewSkladTableAdapter
-            // 
-            this.viewSkladTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.Connection = null;
-            this.tableAdapterManager.UpdateOrder = rolete.skladDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // skladDataSet1
-            // 
-            this.skladDataSet1.DataSetName = "skladDataSet1";
-            this.skladDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // viewBindingSource
-            // 
-            this.viewBindingSource.DataMember = "View";
-            this.viewBindingSource.DataSource = this.skladDataSet1;
-            // 
-            // viewTableAdapter
-            // 
-            this.viewTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.Connection = null;
-            this.tableAdapterManager1.UpdateOrder = rolete.skladDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+           
             // 
             // menuStrip1
             // 
@@ -198,10 +152,7 @@
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.skladDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewSkladBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.skladDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewBindingSource)).EndInit();
+            
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.skladDataSet2)).EndInit();
@@ -216,14 +167,7 @@
 
         #endregion
 
-        private skladDataSet skladDataSet;
-        private System.Windows.Forms.BindingSource viewSkladBindingSource;
-        private skladDataSetTableAdapters.ViewSkladTableAdapter viewSkladTableAdapter;
-        private skladDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private skladDataSet1 skladDataSet1;
-        private System.Windows.Forms.BindingSource viewBindingSource;
-        private skladDataSet1TableAdapters.ViewTableAdapter viewTableAdapter;
-        private skladDataSet1TableAdapters.TableAdapterManager tableAdapterManager1;
+       
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox1;

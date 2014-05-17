@@ -79,16 +79,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>sklad.tt</DependentUpon>
     </Compile>
-    <Compile Include="skladDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>skladDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="skladDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>skladDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="skladDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -122,28 +112,6 @@
     <None Include="sklad.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>sklad.cs</LastGenOutput>
-    </None>
-    <None Include="skladDataSet.xsc">
-      <DependentUpon>skladDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="skladDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>skladDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="skladDataSet.xss">
-      <DependentUpon>skladDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="skladDataSet1.xsc">
-      <DependentUpon>skladDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="skladDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>skladDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="skladDataSet1.xss">
-      <DependentUpon>skladDataSet1.xsd</DependentUpon>
     </None>
     <None Include="skladDataSet2.xsc">
       <DependentUpon>skladDataSet2.xsd</DependentUpon>
