@@ -28,34 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.skladDataSet2 = new rolete.skladDataSet2();
-            this.viewFeathersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.viewFeathersTableAdapter = new rolete.skladDataSet2TableAdapters.ViewFeathersTableAdapter();
-            this.tableAdapterManager2 = new rolete.skladDataSet2TableAdapters.TableAdapterManager();
-            this.viewMechanismBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.viewMechanismTableAdapter = new rolete.skladDataSet2TableAdapters.ViewMechanismTableAdapter();
-            this.viewMotBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.viewMotTableAdapter = new rolete.skladDataSet2TableAdapters.ViewMotTableAdapter();
-            this.viewProfilBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.viewProfilTableAdapter = new rolete.skladDataSet2TableAdapters.ViewProfilTableAdapter();
-           
+            this.button1 = new System.Windows.Forms.Button();
+            this.id = new System.Windows.Forms.TextBox();
+            this.name = new System.Windows.Forms.TextBox();
+            this.metr_count = new System.Windows.Forms.TextBox();
+            this.color_length = new System.Windows.Forms.TextBox();
+            this.price = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.skladDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewFeathersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewMechanismBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewMotBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewProfilBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // skladDataSet
-            // 
-           
             // 
             // menuStrip1
             // 
@@ -63,7 +47,7 @@
             this.выходToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(621, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(792, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -93,58 +77,62 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Остаток";
             // 
-            // skladDataSet2
+            // button1
             // 
-            this.skladDataSet2.DataSetName = "skladDataSet2";
-            this.skladDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.button1.Location = new System.Drawing.Point(550, 259);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Set";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // viewFeathersBindingSource
+            // id
             // 
-            this.viewFeathersBindingSource.DataMember = "ViewFeathers";
-            this.viewFeathersBindingSource.DataSource = this.skladDataSet2;
+            this.id.Location = new System.Drawing.Point(550, 82);
+            this.id.Name = "id";
+            this.id.Size = new System.Drawing.Size(100, 20);
+            this.id.TabIndex = 4;
             // 
-            // viewFeathersTableAdapter
+            // name
             // 
-            this.viewFeathersTableAdapter.ClearBeforeFill = true;
+            this.name.Location = new System.Drawing.Point(550, 117);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(100, 20);
+            this.name.TabIndex = 5;
             // 
-            // tableAdapterManager2
+            // metr_count
             // 
-            this.tableAdapterManager2.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager2.Connection = null;
-            this.tableAdapterManager2.UpdateOrder = rolete.skladDataSet2TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.metr_count.Location = new System.Drawing.Point(550, 152);
+            this.metr_count.Name = "metr_count";
+            this.metr_count.Size = new System.Drawing.Size(100, 20);
+            this.metr_count.TabIndex = 6;
             // 
-            // viewMechanismBindingSource
+            // color_length
             // 
-            this.viewMechanismBindingSource.DataMember = "ViewMechanism";
-            this.viewMechanismBindingSource.DataSource = this.skladDataSet2;
+            this.color_length.Location = new System.Drawing.Point(550, 188);
+            this.color_length.Name = "color_length";
+            this.color_length.Size = new System.Drawing.Size(100, 20);
+            this.color_length.TabIndex = 7;
             // 
-            // viewMechanismTableAdapter
+            // price
             // 
-            this.viewMechanismTableAdapter.ClearBeforeFill = true;
-            // 
-            // viewMotBindingSource
-            // 
-            this.viewMotBindingSource.DataMember = "ViewMot";
-            this.viewMotBindingSource.DataSource = this.skladDataSet2;
-            // 
-            // viewMotTableAdapter
-            // 
-            this.viewMotTableAdapter.ClearBeforeFill = true;
-            // 
-            // viewProfilBindingSource
-            // 
-            this.viewProfilBindingSource.DataMember = "ViewProfil";
-            this.viewProfilBindingSource.DataSource = this.skladDataSet2;
-            // 
-            // viewProfilTableAdapter
-            // 
-            this.viewProfilTableAdapter.ClearBeforeFill = true;
+            this.price.Location = new System.Drawing.Point(550, 223);
+            this.price.Name = "price";
+            this.price.Size = new System.Drawing.Size(100, 20);
+            this.price.TabIndex = 8;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 371);
+            this.ClientSize = new System.Drawing.Size(792, 407);
+            this.Controls.Add(this.price);
+            this.Controls.Add(this.color_length);
+            this.Controls.Add(this.metr_count);
+            this.Controls.Add(this.name);
+            this.Controls.Add(this.id);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.menuStrip1);
@@ -152,14 +140,8 @@
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
-            
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.skladDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewFeathersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewMechanismBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewMotBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewProfilBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,16 +153,13 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
-        private skladDataSet2 skladDataSet2;
-        private System.Windows.Forms.BindingSource viewFeathersBindingSource;
-        private skladDataSet2TableAdapters.ViewFeathersTableAdapter viewFeathersTableAdapter;
-        private skladDataSet2TableAdapters.TableAdapterManager tableAdapterManager2;
-        private System.Windows.Forms.BindingSource viewMechanismBindingSource;
-        private skladDataSet2TableAdapters.ViewMechanismTableAdapter viewMechanismTableAdapter;
-        private System.Windows.Forms.BindingSource viewMotBindingSource;
-        private skladDataSet2TableAdapters.ViewMotTableAdapter viewMotTableAdapter;
-        private System.Windows.Forms.BindingSource viewProfilBindingSource;
-        private skladDataSet2TableAdapters.ViewProfilTableAdapter viewProfilTableAdapter;
+        private System.Windows.Forms.Label label1;         
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox id;
+        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.TextBox metr_count;
+        private System.Windows.Forms.TextBox color_length;
+        private System.Windows.Forms.TextBox price;
+ 
     }
 }
