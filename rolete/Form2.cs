@@ -102,7 +102,8 @@ namespace rolete
         {
             try
             {
-                this.cn.ConnectionString        = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\оо\Documents\GitHub\rolete_coursework_project\rolete\warehouse.accdb;Persist Security Info=True";
+                string path                     = Environment.CurrentDirectory + "\\warehouse.accdb";
+                this.cn.ConnectionString        = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='"+path+"';Persist Security Info=True";
                 this.cmd                        = cn.CreateCommand();
                 this.comboBox1.SelectedIndex    = 0;
                 this.Add1.Enabled               = Update.Enabled = Del.Enabled = false;
@@ -122,7 +123,7 @@ namespace rolete
                 Sing.ForeColor                  = Color.WhiteSmoke;
                 Exit.ForeColor                  = Color.WhiteSmoke;
                 Execute.ForeColor               = Color.WhiteSmoke;
-
+               
                 Add1.FlatStyle = Del.FlatStyle  = Update.FlatStyle = Sing.FlatStyle = Exit.FlatStyle = Execute.FlatStyle = FlatStyle.Flat;
 
                 Add1.FlatAppearance.BorderColor     = this.BackColor;
