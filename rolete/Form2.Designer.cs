@@ -41,6 +41,10 @@
             this.price = new System.Windows.Forms.TextBox();
             this.Del = new System.Windows.Forms.Button();
             this.Update = new System.Windows.Forms.Button();
+            this.Login = new System.Windows.Forms.TextBox();
+            this.Password = new System.Windows.Forms.TextBox();
+            this.Sing = new System.Windows.Forms.Button();
+            this.Exit = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,11 +149,54 @@
             this.Update.UseVisualStyleBackColor = true;
             this.Update.Click += new System.EventHandler(this.Update_Click);
             // 
+            // Login
+            // 
+            this.Login.Location = new System.Drawing.Point(238, 27);
+            this.Login.Name = "Login";
+            this.Login.Size = new System.Drawing.Size(100, 20);
+            this.Login.TabIndex = 11;
+            this.Login.Text = "Login";
+            this.Login.Click += new System.EventHandler(this.Login_Click);
+            // 
+            // Password
+            // 
+            this.Password.Location = new System.Drawing.Point(357, 27);
+            this.Password.Name = "Password";
+            this.Password.PasswordChar = '*';
+            this.Password.Size = new System.Drawing.Size(100, 20);
+            this.Password.TabIndex = 12;
+            this.Password.Text = "Password";
+            this.Password.Click += new System.EventHandler(this.Password_Click);
+            // 
+            // Sing
+            // 
+            this.Sing.Location = new System.Drawing.Point(473, 25);
+            this.Sing.Name = "Sing";
+            this.Sing.Size = new System.Drawing.Size(55, 23);
+            this.Sing.TabIndex = 13;
+            this.Sing.Text = "Sing In";
+            this.Sing.UseVisualStyleBackColor = true;
+            this.Sing.Click += new System.EventHandler(this.SignIn_Click);
+            // 
+            // Exit
+            // 
+            this.Exit.Location = new System.Drawing.Point(534, 25);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(53, 23);
+            this.Exit.TabIndex = 14;
+            this.Exit.Text = "Exit";
+            this.Exit.UseVisualStyleBackColor = true;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 407);
+            this.Controls.Add(this.Exit);
+            this.Controls.Add(this.Sing);
+            this.Controls.Add(this.Password);
+            this.Controls.Add(this.Login);
             this.Controls.Add(this.Update);
             this.Controls.Add(this.Del);
             this.Controls.Add(this.price);
@@ -187,6 +234,10 @@
         private System.Windows.Forms.TextBox price;
         private System.Windows.Forms.Button Del;
         private System.Windows.Forms.Button Update;
+        private System.Windows.Forms.TextBox Login;
+        private System.Windows.Forms.TextBox Password;
+        private System.Windows.Forms.Button Sing;
+        private System.Windows.Forms.Button Exit;
  
     }
 }

@@ -105,6 +105,8 @@ namespace rolete
                 this.cn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\оо\Documents\GitHub\rolete_coursework_project\rolete\warehouse.accdb;Persist Security Info=True";
                 this.cmd = cn.CreateCommand();
                 this.comboBox1.SelectedIndex = 0;
+                this.button1.Enabled = Update.Enabled = Del.Enabled = false;
+                comboBox1.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -179,7 +181,7 @@ namespace rolete
         private void ResizeData()
         {
             this.dataGridView1.Width = this.dataGridView1.ColumnCount * this.dataGridView1.Columns[2].Width;
-            if (dataGridView1.Height > this.Height - 10)
+            if (dataGridView1.Height > this.Height - 50)
                 this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             else
                 this.dataGridView1.Height = this.dataGridView1.RowCount * this.dataGridView1.Rows[0].Height;
@@ -1011,6 +1013,73 @@ namespace rolete
                 MessageBox.Show("Error 5\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //-------------------------------------------------------------------------------------------------------------------------
+        //-------------------------------------------Login to database or exit-------------------------------------------------------
+        //-------------------------------------------------------------------------------------------------------------------------
+        private void SignIn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string q = "select Pass from Пользователи where [_EnterName] = '" + Login.Text + "'";
+                string pass = null;
+                loaddata(q);               
+                cmd.ExecuteNonQuery();
+
+                OleDbDataReader dr = cmd.ExecuteReader();
+
+               
+                if (dr.HasRows)
+                {
+                    DataTable dt = new DataTable();
+                    dt.Load(dr);
+                    pass = dt.Rows[0][0].ToString();                    
+                }
+
+                if (pass == Password.Text && pass == "admin")
+                {
+                    this.button1.Enabled = Update.Enabled = Del.Enabled = true;
+                    comboBox1.Enabled = true;
+                    MessageBox.Show("Now you can change data base", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Sing.Enabled = false;
+                    Exit.Enabled = true;
+                    Login.Enabled = Password.Enabled = false;
+                }
+                else if (pass == Password.Text && pass != "admin") {
+                    MessageBox.Show("Hello " + Login.Text, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Sing.Enabled = false;
+                    Exit.Enabled = true;
+                    Login.Enabled = Password.Enabled = false;
+                }
+                else MessageBox.Show("Wrong password or login", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                cn.Close();
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Error 6\n" +ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Good luck " + Login.Text, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Login.Text = Password.Text = "";
+            this.button1.Enabled = Update.Enabled = Del.Enabled = false;
+            comboBox1.Enabled = false; Sing.Enabled = true;
+            Login.Enabled = Password.Enabled = true;
+            Exit.Enabled = false;
+        }
+        //-------------------------------------------------------------------------------------------------------------------------
+        private void Login_Click(object sender, EventArgs e)
+        {
+            Login.Text = "";
+        }
+
+        private void Password_Click(object sender, EventArgs e)
+        {
+            Password.Text = "";
+        }
+        
         //-------------------------------------------------------------------------------------------------------------------------
     }
 }
