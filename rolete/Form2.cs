@@ -103,14 +103,41 @@ namespace rolete
             try
             {
                 this.cn.ConnectionString        = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\оо\Documents\GitHub\rolete_coursework_project\rolete\warehouse.accdb;Persist Security Info=True";
-                this.cmd = cn.CreateCommand();
+                this.cmd                        = cn.CreateCommand();
                 this.comboBox1.SelectedIndex    = 0;
-                this.button1.Enabled            = Update.Enabled = Del.Enabled = false;
+                this.Add1.Enabled               = Update.Enabled = Del.Enabled = false;
                 comboBox1.Enabled               = false;
                 Exit.Enabled                    = false;
                 SqlQuery.Enabled                = false;
                 Execute.Enabled                 = false;
+                Add1.BackColor                  = this.BackColor;
+                Del.BackColor                   = this.BackColor;
+                Update.BackColor                = this.BackColor;
+                Sing.BackColor                  = this.BackColor;
+                Exit.BackColor                  = this.BackColor;
+                Execute.BackColor               = this.BackColor;
+                Add1.ForeColor                  = Color.WhiteSmoke;
+                Del.ForeColor                   = Color.WhiteSmoke;
+                Update.ForeColor                = Color.WhiteSmoke;
+                Sing.ForeColor                  = Color.WhiteSmoke;
+                Exit.ForeColor                  = Color.WhiteSmoke;
+                Execute.ForeColor               = Color.WhiteSmoke;
 
+                Add1.FlatStyle = Del.FlatStyle  = Update.FlatStyle = Sing.FlatStyle = Exit.FlatStyle = Execute.FlatStyle = FlatStyle.Flat;
+
+                Add1.FlatAppearance.BorderColor     = this.BackColor;
+                Del.FlatAppearance.BorderColor      = this.BackColor;
+                Update.FlatAppearance.BorderColor   = this.BackColor;
+                Sing.FlatAppearance.BorderColor     = this.BackColor;
+                Exit.FlatAppearance.BorderColor     = this.BackColor;
+                Execute.FlatAppearance.BorderColor  = this.BackColor;
+
+                Add1.FlatAppearance.MouseOverBackColor      = Color.FromArgb(85, 85, 85);
+                Del.FlatAppearance.MouseOverBackColor       = Color.FromArgb(85, 85, 85);
+                Update.FlatAppearance.MouseOverBackColor    = Color.FromArgb(85, 85, 85);
+                Sing.FlatAppearance.MouseOverBackColor      = Color.FromArgb(85, 85, 85);
+                Exit.FlatAppearance.MouseOverBackColor      = Color.FromArgb(85, 85, 85);
+                Execute.FlatAppearance.MouseOverBackColor   = Color.FromArgb(85, 85, 85);
             }
             catch (Exception ex)
             {
@@ -1041,7 +1068,7 @@ namespace rolete
 
                 if (pass == Password.Text && pass == "admin")
                 {
-                    this.button1.Enabled = Update.Enabled = Del.Enabled = true;
+                    this.Add1.Enabled = Update.Enabled = Del.Enabled = true;
                     comboBox1.Enabled   = true;
                     MessageBox.Show("Now you can change data base", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Sing.Enabled        = false;
@@ -1059,9 +1086,7 @@ namespace rolete
                     SqlQuery.Enabled    = true;
                     Execute.Enabled     = true;
                 }
-                else MessageBox.Show("Wrong password or login", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
+                else MessageBox.Show("Wrong password or login", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);                
                 cn.Close();
             }
             catch (Exception ex) {
@@ -1073,7 +1098,7 @@ namespace rolete
         {
             MessageBox.Show("Good luck " + Login.Text, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Login.Text              = Password.Text     = "";
-            this.button1.Enabled    = Update.Enabled    = Del.Enabled = false;
+            this.Add1.Enabled    = Update.Enabled    = Del.Enabled = false;
             comboBox1.Enabled       = false; 
             Sing.Enabled            = true;
             Login.Enabled           = Password.Enabled  = true;
@@ -1093,7 +1118,9 @@ namespace rolete
         {
             Password.Text = "";
         }
-
+        //-------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------Execute sql dynamic query-------------------------------------------------------
+        //-------------------------------------------------------------------------------------------------------------------------
         private void SqlQuery_Click(object sender, EventArgs e)
         {
             SqlQuery.Text = "";

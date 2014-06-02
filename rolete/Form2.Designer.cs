@@ -33,7 +33,7 @@
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Add1 = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.TextBox();
             this.name = new System.Windows.Forms.TextBox();
             this.metr_count = new System.Windows.Forms.TextBox();
@@ -86,15 +86,15 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Остаток";
             // 
-            // button1
+            // Add1
             // 
-            this.button1.Location = new System.Drawing.Point(550, 259);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(51, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Add1.Location = new System.Drawing.Point(550, 259);
+            this.Add1.Name = "Add1";
+            this.Add1.Size = new System.Drawing.Size(51, 23);
+            this.Add1.TabIndex = 3;
+            this.Add1.Text = "Add";
+            this.Add1.UseVisualStyleBackColor = true;
+            this.Add1.Click += new System.EventHandler(this.button1_Click);
             // 
             // id
             // 
@@ -228,7 +228,7 @@
             this.Controls.Add(this.metr_count);
             this.Controls.Add(this.name);
             this.Controls.Add(this.id);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Add1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.menuStrip1);
@@ -250,7 +250,7 @@
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;         
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Add1;
         private System.Windows.Forms.TextBox id;
         private System.Windows.Forms.TextBox name;
         private System.Windows.Forms.TextBox metr_count;
