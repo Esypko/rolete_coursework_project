@@ -193,6 +193,7 @@ namespace rolete
         {
             try
             {
+                
                 try
                 {
                     this.form2 = new Form2();
@@ -216,6 +217,11 @@ namespace rolete
         private void Form1_Move(object sender, EventArgs e)
         {
             form2.Location = new Point(this.Location.X + this.Width, this.Location.Y);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
     class CustomProfessionalColors : ProfessionalColorTable

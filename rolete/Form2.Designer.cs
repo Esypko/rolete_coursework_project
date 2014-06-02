@@ -19,7 +19,8 @@
             }
             base.Dispose(disposing);
         }
-
+        
+        
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -38,6 +39,8 @@
             this.metr_count = new System.Windows.Forms.TextBox();
             this.color_length = new System.Windows.Forms.TextBox();
             this.price = new System.Windows.Forms.TextBox();
+            this.Del = new System.Windows.Forms.Button();
+            this.Update = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,9 +84,9 @@
             // 
             this.button1.Location = new System.Drawing.Point(550, 259);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(51, 23);
             this.button1.TabIndex = 3;
-            this.button1.Text = "Set";
+            this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -122,11 +125,33 @@
             this.price.Size = new System.Drawing.Size(100, 20);
             this.price.TabIndex = 8;
             // 
+            // Del
+            // 
+            this.Del.Location = new System.Drawing.Point(599, 259);
+            this.Del.Name = "Del";
+            this.Del.Size = new System.Drawing.Size(51, 23);
+            this.Del.TabIndex = 9;
+            this.Del.Text = "Del";
+            this.Del.UseVisualStyleBackColor = true;
+            this.Del.Click += new System.EventHandler(this.Del_Click);
+            // 
+            // Update
+            // 
+            this.Update.Location = new System.Drawing.Point(550, 288);
+            this.Update.Name = "Update";
+            this.Update.Size = new System.Drawing.Size(100, 23);
+            this.Update.TabIndex = 10;
+            this.Update.Text = "Update";
+            this.Update.UseVisualStyleBackColor = true;
+            this.Update.Click += new System.EventHandler(this.Update_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 407);
+            this.Controls.Add(this.Update);
+            this.Controls.Add(this.Del);
             this.Controls.Add(this.price);
             this.Controls.Add(this.color_length);
             this.Controls.Add(this.metr_count);
@@ -160,6 +185,8 @@
         private System.Windows.Forms.TextBox metr_count;
         private System.Windows.Forms.TextBox color_length;
         private System.Windows.Forms.TextBox price;
+        private System.Windows.Forms.Button Del;
+        private System.Windows.Forms.Button Update;
  
     }
 }

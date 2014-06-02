@@ -12,10 +12,11 @@ namespace rolete
 {
     public partial class Form2 : Form
     {
+        bool bt1_click = false;
+
         //obj to work with database
         private OleDbCommand cmd = new OleDbCommand();
         private OleDbConnection cn = new OleDbConnection();
-        private OleDbDataReader dr;
         private DataTable dt;
 
         // table to fill
@@ -32,8 +33,7 @@ namespace rolete
         private int lastSelectedIndex = 0;
         // Set animated speed
         private int AnimatedSpeed = 1;
-        //------------------------------
-        private int lastLocationY = 0;
+        //------------------------------        
         private int lastLocationX = 0;
         public Form2()
         {
@@ -44,16 +44,18 @@ namespace rolete
                 menuStrip1.ForeColor = Color.White;
                 menuStrip1.Renderer = new ToolStripProfessionalRenderer(new CustomProfessionalColors());
                 //-------------------------------------------------------------------------------------------
-                this.comboBox1.Items.Add("Перья");
-                this.comboBox1.Items.Add("Механизмы");
-                this.comboBox1.Items.Add("Материалы");
-                this.comboBox1.Items.Add("Профиля");
-               
+                this.comboBox1.Items.Add("Feathers");
+                this.comboBox1.Items.Add("Mechanism");
+                this.comboBox1.Items.Add("Expendable_Materials");
+                this.comboBox1.Items.Add("Shape");
+
                 this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                 //-------------------------------------------------------------------------------------------
                 this.dataGridView1.Location = new Point(this.label1.Location.X, this.label1.Location.Y + 50);
-                this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;                 
+                this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
                 this.dataGridView1.Visible = false;
+                this.dataGridView1.ReadOnly = true;
+                this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 //-------------------------------------------------------------------------------------------
                 //add new item to controls
                 this.Controls.Add(this.dataGridView1);
@@ -66,31 +68,32 @@ namespace rolete
                 this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
                 //-------------------------------------------------------------------------------------------
                 //---------------------set labels location---------------------------------------------------
-                _id.Location            = new Point(id.Location.X + id.Width + 20, id.Location.Y + id.Height/6);
-                _name.Location          = new Point(name.Location.X + name.Width + 20, name.Location.Y + name.Height/6);
-                _metr_count.Location    = new Point(metr_count.Location.X + metr_count.Width + 20, metr_count.Location.Y + metr_count.Height/6);
-                _colot_length.Location  = new Point(color_length.Location.X + color_length.Width + 20, color_length.Location.Y + color_length.Height/6);
-                _price.Location         = new Point(price.Location.X + price.Width + 20, price.Location.Y + price.Height/6);
+                _id.Location = new Point(id.Location.X + id.Width + 20, id.Location.Y + id.Height / 6);
+                _name.Location = new Point(name.Location.X + name.Width + 20, name.Location.Y + name.Height / 6);
+                _metr_count.Location = new Point(metr_count.Location.X + metr_count.Width + 20, metr_count.Location.Y + metr_count.Height / 6);
+                _colot_length.Location = new Point(color_length.Location.X + color_length.Width + 20, color_length.Location.Y + color_length.Height / 6);
+                _price.Location = new Point(price.Location.X + price.Width + 20, price.Location.Y + price.Height / 6);
                 //-------------------------------------------------------------------------------------------
                 //-------------------------set labels name---------------------------------------------------
-                _id.Text            = "ID";
-                _name.Text          = "Feathers";
-                _metr_count.Text    = "Meters";
-                _colot_length.Text  = "Color";
-                _price.Text         = "Price";
+                _id.Text = "ID";
+                _name.Text = "Feathers";
+                _metr_count.Text = "Meters";
+                _colot_length.Text = "Color";
+                _price.Text = "Price";
                 //-------------------------------------------------------------------------------------------
                 //------------------------------------Set labels color---------------------------------------
                 _id.ForeColor = _name.ForeColor = _metr_count.ForeColor = _colot_length.ForeColor = _price.ForeColor = Color.WhiteSmoke;
                 //-------------------------------------------------------------------------------------------
                 //------------------------------------Set visible to lables----------------------------------
-                _id.Visible             = true;
-                _name.Visible           = true;
-                _metr_count.Visible     = true;
-                _colot_length.Visible   = true;
-                _price.Visible          = true;
+                _id.Visible = true;
+                _name.Visible = true;
+                _metr_count.Visible = true;
+                _colot_length.Visible = true;
+                _price.Visible = true;
                 //-------------------------------------------------------------------------------------------
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -100,44 +103,64 @@ namespace rolete
             try
             {
                 this.cn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\оо\Documents\GitHub\rolete_coursework_project\rolete\warehouse.accdb;Persist Security Info=True";
-                this.cmd.Connection = cn;
+                this.cmd = cn.CreateCommand();
                 this.comboBox1.SelectedIndex = 0;
             }
-            catch (Exception ex){
+            catch (Exception ex)
+            {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }           
+            }
 
         }
         //-------------------------------------------------------------------------------------------
-        // load data with sql command
-        private void loaddata(string command) {
+        // add command to commandText
+        private void loaddata(string command)
+        {
             cmd.CommandText = null;
             cmd.CommandText = command;
-            cn.Open();            
+            cn.Open();
         }
         //-------------------------------------------------------------------------------------------
         // add data to DataReader
-        private void DataReader() {
+        private void DataReader()
+        {
             try
             {
+
                 this.dt = new DataTable();
-                this.dr = this.cmd.ExecuteReader();
                 dt.Clear();
-                dt.Load(dr);              
-                this.dataGridView1.DataSource = dt;                                
+
+                OleDbDataReader dr;
+                if (cmd.ExecuteNonQuery() != -1)
+
+                    if (bt1_click)
+                    {
+                        cmd.CommandText = "select * from " + comboBox1.SelectedItem.ToString();
+                        bt1_click = false;
+                    }
+                cmd.ExecuteNonQuery();
+
+                dr = cmd.ExecuteReader();
+
+                dt.Load(dr);
+                this.dataGridView1.DataSource = dt;
+
                 dr.Close();
                 cn.Close();
+                ResizeData();
             }
 
             // if somthing wrong then close connection and show error
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 this.cn.Close();
-                MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error 1\n" + ex.Message + ex.HelpLink.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //-------------------------------------------------------------------------------------------
         // clear datagridview 
-        private void ClearData() {
+        private void ClearData()
+        {
             try
             {
                 this.dt = new DataTable();
@@ -153,9 +176,10 @@ namespace rolete
         }
         //-------------------------------------------------------------------------------------------
         // resize datagridview depens of data
-        private void ResizeData() {
+        private void ResizeData()
+        {
             this.dataGridView1.Width = this.dataGridView1.ColumnCount * this.dataGridView1.Columns[2].Width;
-            if (dataGridView1.Height > 400)
+            if (dataGridView1.Height > this.Height - 10)
                 this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             else
                 this.dataGridView1.Height = this.dataGridView1.RowCount * this.dataGridView1.Rows[0].Height;
@@ -167,7 +191,7 @@ namespace rolete
             this.Close();
         }
         //-------------------------------------------------------------------------------------------
-        // show load data on datagridview (depend of selected index)
+        // show load data on datagridview (depend on selected index)
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -175,51 +199,51 @@ namespace rolete
                 this.dataGridView1.Visible = true;
                 // view feathers
                 if (this.comboBox1.SelectedIndex == 0)
-                {                                        
+                {
                     loaddata("select * from Feathers");
                     ClearData();
                     DataReader();
-                    ResizeData();
                     ChangeControlsPosition(comboBox1.SelectedIndex);
                     lastSelectedIndex = comboBox1.SelectedIndex;
                 }
                 // view mechanism
-                if (this.comboBox1.SelectedIndex == 1) {                   
+                if (this.comboBox1.SelectedIndex == 1)
+                {
                     loaddata("select * from Mechanism");
                     ClearData();
                     DataReader();
-                    ResizeData();
                     ChangeControlsPosition(comboBox1.SelectedIndex);
                     lastSelectedIndex = comboBox1.SelectedIndex;
                 }
                 // view materials
-                if (this.comboBox1.SelectedIndex == 2) {                   
+                if (this.comboBox1.SelectedIndex == 2)
+                {
                     loaddata("select * from Expendable_Materials");
                     ClearData();
                     DataReader();
-                    ResizeData();
                     ChangeControlsPosition(comboBox1.SelectedIndex);
                     lastSelectedIndex = comboBox1.SelectedIndex;
                 }
                 // view shape
                 if (this.comboBox1.SelectedIndex == 3)
-                {                    
+                {
                     loaddata("select * from Shape");
                     ClearData();
                     DataReader();
-                    ResizeData();
                     ChangeControlsPosition(comboBox1.SelectedIndex);
                     lastSelectedIndex = comboBox1.SelectedIndex;
                 }
             }
-            catch (Exception ex) {
-                MessageBox.Show("Error\n" + ex.Message,"Error" ,MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //-------------------------------------------------------------------------------------------
         // add data to selected table
         private void button1_Click(object sender, EventArgs e)
         {
+            bt1_click = true;
             try
             {
                 //add data to Feathers
@@ -227,48 +251,77 @@ namespace rolete
                 {
                     if (this.id.Text != "" && this.name.Text != "" && this.metr_count.Text != "" && this.color_length.Text != "" && price.Text != "")
                     {
-                        string q = "insert into Feathers (_ID, _Name, _Meters, _Color, _Price) values (" + id.Text + ",'" + name.Text + "'," + metr_count.Text + "'," + color_length.Text + ", "+price.Text+")";
-                        AddData(q);
+                        string q = "insert into Feathers (_id, _Name, _Meters, _Color, _Price) values (" + id.Text + ",'" + name.Text + "'," + metr_count.Text + ",'" + color_length.Text + "', " + price.Text + ")";
+                        loaddata(q);
+                        ClearData();
+                        DataReader();
                     }
                 }
                 //add data to mechanism
-                if (this.comboBox1.SelectedIndex == 1) {
-                    if (id.Text != "" && name.Text != "" && metr_count.Text != "" && color_length.Text != "" && price.Text != "") {
-                        string q = "insert into Mechanism (_ID, _Name, _Count, _Length, _Price) values ("+id.Text+",'"+name.Text+"',"+metr_count.Text+", "+color_length.Text+","+price.Text+")";
-                        AddData(q);
+                if (this.comboBox1.SelectedIndex == 1)
+                {
+                    if (id.Text != "" && name.Text != "" && metr_count.Text != "" && color_length.Text != "" && price.Text != "")
+                    {
+                        string q = "insert into Mechanism (_ID, _Name, _Count, _Length, _Price) values (" + id.Text + ",'" + name.Text + "'," + metr_count.Text + ", " + color_length.Text + "," + price.Text + ")";
+                        loaddata(q);
+                        ClearData();
+                        DataReader();
                     }
                 }
                 //add data to material
-                if (this.comboBox1.SelectedIndex == 2) {
-                    if (id.Text != "" && name.Text != "" && metr_count.Text != "" && price.Text != "") {
-                        string q = "insert into Expendable_Materials (_ID, _Name, _Count, _Price) values ("+id.Text+",'"+name.Text+"',"+metr_count.Text+","+price.Text+")";
-                        AddData(q);
+                if (this.comboBox1.SelectedIndex == 2)
+                {
+                    if (id.Text != "" && name.Text != "" && metr_count.Text != "" && color_length.Text != "")
+                    {
+                        string q = "insert into Expendable_Materials (_ID, _Name, _Count, _Price) values (" + id.Text + ",'" + name.Text + "'," + metr_count.Text + "," + color_length.Text + ")";
+                        loaddata(q);
+                        ClearData();
+                        DataReader();
                     }
                 }
                 //add data to shape
-                if (this.comboBox1.SelectedIndex == 3) {
-                    if (id.Text != "" && name.Text != "" && metr_count.Text != "" && color_length.Text != "" && price.Text != "") {
-                        string q = "insert into Shape (_ID, _Name, _Meters, _Color, _Price) values (" + id.Text + ",'" + name.Text + "'," + metr_count.Text + "'," + color_length.Text + ", " + price.Text + ")";
-                        AddData(q);
+                if (this.comboBox1.SelectedIndex == 3)
+                {
+                    if (id.Text != "" && name.Text != "" && metr_count.Text != "" && color_length.Text != "" && price.Text != "")
+                    {
+                        string q = "insert into Shape (_ID, _Name, _Meters, _Color, _Price) values (" + id.Text + ",'" + name.Text + "'," + metr_count.Text + "," + color_length.Text + ", " + price.Text + ")";
+                        loaddata(q);
+                        ClearData();
+                        DataReader();
                     }
                 }
             }
-            catch (Exception ex) {
-                MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error 2\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //-------------------------------------------------------------------------------------------
         // sql add
-        private void AddData(string q) {
-            this.cn.Open();
-            cmd.CommandText = q;
-            cmd.ExecuteNonQuery();
-            DataReader();
-            cn.Close();
-            
+        private void sqlCommand(string q)
+        {
+            try
+            {
+                this.cn.Open();
+                cmd.CommandText = null;
+                cmd.CommandText = q;
+                cmd.CommandType = CommandType.Text;
+                // cmd.ExecuteNonQuery();
+                ClearData();
+                DataReader();
+                cn.Close();
+                dataGridView1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show("Error 3\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         //--------------------------Timer------------------------------------------------------------
-        private void _Timer() {
+        private void _Timer()
+        {
             Timer t = new Timer();
             t.Interval = 10;
             t.Start();
@@ -277,12 +330,14 @@ namespace rolete
         }
         //-------------------------------------------------------------------------------------------
         //---------------------Change controls position depend on combo box selected index-----------
-        private void ChangeControlsPosition(int SelectedIndex) {
-            switch (SelectedIndex) {
-                case 0: FeatersSelected();              break;
-                case 1: MechanismSelected();            break;
-                case 2: ExpendableMaterialsSelected();  break;
-                case 3: ShapeSelected();                break;
+        private void ChangeControlsPosition(int SelectedIndex)
+        {
+            switch (SelectedIndex)
+            {
+                case 0: FeatersSelected(); break;
+                case 1: MechanismSelected(); break;
+                case 2: ExpendableMaterialsSelected(); break;
+                case 3: ShapeSelected(); break;
             }
         }
         //-------------------------------------------------------------------------------------------
@@ -290,11 +345,14 @@ namespace rolete
         //-------------------------------------------------------------------------------------------
 
         //-------------------------------------Feathers selected-------------------------------------
-        private void FeatersSelected() {
-            if (lastSelectedIndex == 0) { 
+        private void FeatersSelected()
+        {
+            if (lastSelectedIndex == 0)
+            {
                 // nothing to do
             }
-            else if (lastSelectedIndex == 1) { //lastSelectedItem == Mechanism
+            else if (lastSelectedIndex == 1)
+            { //lastSelectedItem == Mechanism
                 int startLocationX = _metr_count.Location.X;
 
                 while (_metr_count.Location.X < this.Width)
@@ -322,7 +380,8 @@ namespace rolete
                     _Timer();
                 }
             }
-            else if (lastSelectedIndex == 2) { //lastSelectedItem == Expendable_Materials
+            else if (lastSelectedIndex == 2)
+            { //lastSelectedItem == Expendable_Materials
                 lastLocationX = _name.Location.X;
 
                 while (_name.Location.X < this.Width)
@@ -341,21 +400,24 @@ namespace rolete
 
                 lastLocationX = _metr_count.Location.X;
 
-                while (_metr_count.Location.X < this.Width) {
+                while (_metr_count.Location.X < this.Width)
+                {
                     _metr_count.Location = new Point(_metr_count.Location.X + AnimatedSpeed, _metr_count.Location.Y);
                     _Timer();
                 }
 
                 _metr_count.Text = "Meters";
 
-                while (_metr_count.Location.X != lastLocationX) {
+                while (_metr_count.Location.X != lastLocationX)
+                {
                     _metr_count.Location = new Point(_metr_count.Location.X - AnimatedSpeed, _metr_count.Location.Y);
                     _Timer();
                 }
 
                 lastLocationX = _colot_length.Location.X;
 
-                while (_colot_length.Location.X < this.Width) {
+                while (_colot_length.Location.X < this.Width)
+                {
                     _colot_length.Location = new Point(_colot_length.Location.X + AnimatedSpeed, _colot_length.Location.Y);
                     _Timer();
                 }
@@ -375,17 +437,20 @@ namespace rolete
                     _Timer();
                 }
             }
-            else if (lastSelectedIndex == 3) {
+            else if (lastSelectedIndex == 3)
+            {
                 lastLocationX = _name.Location.X;
 
-                while (_name.Location.X < this.Width) {
+                while (_name.Location.X < this.Width)
+                {
                     _name.Location = new Point(_name.Location.X + AnimatedSpeed, _name.Location.Y);
                     _Timer();
                 }
 
                 _name.Text = "Feathers";
 
-                while (_name.Location.X != lastLocationX) {
+                while (_name.Location.X != lastLocationX)
+                {
                     _name.Location = new Point(_name.Location.X - AnimatedSpeed, _name.Location.Y);
                     _Timer();
                 }
@@ -393,28 +458,33 @@ namespace rolete
         }
         //-------------------------------------------------------------------------------------------
         //--------------------------------------Mechanism selected-----------------------------------
-        private void MechanismSelected() {
+        private void MechanismSelected()
+        {
             if (lastSelectedIndex == 0)
             {
                 int startLocationX = _metr_count.Location.X;
 
-                while (_metr_count.Location.X <= this.Width) {
+                while (_metr_count.Location.X <= this.Width)
+                {
                     _metr_count.Location = new Point(_metr_count.Location.X + AnimatedSpeed, _metr_count.Location.Y);
                     _Timer();
                 }
                 _metr_count.Text = "Count";
-                while (_metr_count.Location.X != startLocationX) {
+                while (_metr_count.Location.X != startLocationX)
+                {
                     _metr_count.Location = new Point(_metr_count.Location.X - AnimatedSpeed, _metr_count.Location.Y);
                     _Timer();
                 }
 
                 startLocationX = _colot_length.Location.X;
-                while (_colot_length.Location.X < this.Width) {
+                while (_colot_length.Location.X < this.Width)
+                {
                     _colot_length.Location = new Point(_colot_length.Location.X + AnimatedSpeed, _colot_length.Location.Y);
                     _Timer();
                 }
                 _colot_length.Text = "Length";
-                while (_colot_length.Location.X != startLocationX) {
+                while (_colot_length.Location.X != startLocationX)
+                {
                     _colot_length.Location = new Point(_colot_length.Location.X - AnimatedSpeed, _colot_length.Location.Y);
                     _Timer();
                 }
@@ -427,21 +497,24 @@ namespace rolete
             {
                 lastLocationX = _name.Location.X;
 
-                while (_name.Location.X < this.Width) {
+                while (_name.Location.X < this.Width)
+                {
                     _name.Location = new Point(_name.Location.X + AnimatedSpeed, _name.Location.Y);
                     _Timer();
                 }
 
                 _name.Text = "Mechanism";
 
-                while (_name.Location.X != lastLocationX) {
+                while (_name.Location.X != lastLocationX)
+                {
                     _name.Location = new Point(_name.Location.X - AnimatedSpeed, _name.Location.Y);
                     _Timer();
                 }
 
                 lastLocationX = _colot_length.Location.X;
 
-                while (_colot_length.Location.X < this.Width) {
+                while (_colot_length.Location.X < this.Width)
+                {
                     _colot_length.Location = new Point(_colot_length.Location.X + AnimatedSpeed, _colot_length.Location.Y);
                     _Timer();
                 }
@@ -454,7 +527,8 @@ namespace rolete
                     _Timer();
                 }
 
-                while (price.Location.X != id.Location.X) {
+                while (price.Location.X != id.Location.X)
+                {
                     _price.Location = new Point(_price.Location.X - AnimatedSpeed, _price.Location.Y);
                     price.Location = new Point(price.Location.X - AnimatedSpeed, price.Location.Y);
                     _Timer();
@@ -514,40 +588,46 @@ namespace rolete
         }
         //-------------------------------------------------------------------------------------------
         //-----------------------------------Expendable Materials selected---------------------------
-        private void ExpendableMaterialsSelected() {
+        private void ExpendableMaterialsSelected()
+        {
             if (lastSelectedIndex == 0)
             {
                 int startLocationX = _name.Location.X;
 
-                 while (_name.Location.X < this.Width) {
+                while (_name.Location.X < this.Width)
+                {
                     _name.Location = new Point(_name.Location.X + AnimatedSpeed, _name.Location.Y);
                     _Timer();
                 }
 
                 _name.Text = "Materials";
 
-                while (_name.Location.X != startLocationX) {
+                while (_name.Location.X != startLocationX)
+                {
                     _name.Location = new Point(_name.Location.X - AnimatedSpeed, _name.Location.Y);
                     _Timer();
                 }
 
                 startLocationX = _metr_count.Location.X;
 
-                 while (_metr_count.Location.X < this.Width) {
+                while (_metr_count.Location.X < this.Width)
+                {
                     _metr_count.Location = new Point(_metr_count.Location.X + AnimatedSpeed, _metr_count.Location.Y);
                     _Timer();
                 }
 
                 _metr_count.Text = "Count";
 
-                while (_metr_count.Location.X != startLocationX) {
+                while (_metr_count.Location.X != startLocationX)
+                {
                     _metr_count.Location = new Point(_metr_count.Location.X - AnimatedSpeed, _metr_count.Location.Y);
                     _Timer();
-                }               
+                }
 
                 startLocationX = _colot_length.Location.X;
 
-                while (_colot_length.Location.X < this.Width) {
+                while (_colot_length.Location.X < this.Width)
+                {
                     _colot_length.Location = new Point(_colot_length.Location.X + AnimatedSpeed, _colot_length.Location.Y);
                     _Timer();
                 }
@@ -559,12 +639,13 @@ namespace rolete
                     _colot_length.Location = new Point(_colot_length.Location.X - AnimatedSpeed, _colot_length.Location.Y);
                     _Timer();
                 }
-                while (price.Location.X  < this.Width) {
+                while (price.Location.X < this.Width)
+                {
                     _price.Location = new Point(_price.Location.X + AnimatedSpeed, _price.Location.Y);
                     price.Location = new Point(price.Location.X + AnimatedSpeed, price.Location.Y);
                     _Timer();
                 }
-               
+
             }
             else if (lastSelectedIndex == 1)
             {
@@ -685,7 +766,8 @@ namespace rolete
         }
         //-------------------------------------------------------------------------------------------
         //------------------------------------Shape selected-----------------------------------------
-        private void ShapeSelected() {
+        private void ShapeSelected()
+        {
             if (lastSelectedIndex == 0)
             {
                 lastLocationX = _name.Location.X;
@@ -816,5 +898,119 @@ namespace rolete
                 //nothing to do
             }
         }
+
+        private void Del_Click(object sender, EventArgs e)
+        {
+            bt1_click = true;
+            try
+            {
+                string q = "DELETE FROM " + comboBox1.SelectedItem.ToString() + " where [_ID] = " + dataGridView1.CurrentRow.Cells[0].Value;
+                loaddata(q);
+                ClearData();
+                DataReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error 4\n " + ex.Message + ex.StackTrace, "er", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        //-------------------------------------------------------------------------------------------------------------------------
+        //-------------------------------------------Update data in database-------------------------------------------------------
+        //-------------------------------------------------------------------------------------------------------------------------
+        private void Update_Click(object sender, EventArgs e)
+        {
+            bt1_click = true;
+            try
+            {
+                if (Update.Text != "Confirm")
+                {
+                    if (comboBox1.SelectedIndex == 0)
+                    {
+                        id.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                        name.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                        metr_count.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                        color_length.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                        price.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                    }
+                    if (comboBox1.SelectedIndex == 1)
+                    {
+                        id.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                        name.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                        metr_count.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                        color_length.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                        price.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                    }
+                    if (comboBox1.SelectedIndex == 2)
+                    {
+                        id.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                        name.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                        metr_count.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                        color_length.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                    }
+                    if (comboBox1.SelectedIndex == 3)
+                    {
+                        id.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                        name.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                        metr_count.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                        color_length.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                        price.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                    }
+                }
+                if (Update.Text == "Confirm")
+                {
+                    if (this.comboBox1.SelectedIndex == 0)
+                    {
+                        string q = "update  Feathers set _id =" + id.Text + ",_Name = '" + name.Text + "',_Meters = " + metr_count.Text + ",_Color = '" + color_length.Text + "',_Price =  " + price.Text;
+                        loaddata(q);
+                        ClearData();
+                        DataReader();
+
+                    }
+                    //update data to mechanism
+                    if (this.comboBox1.SelectedIndex == 1)
+                    {
+
+                        string q = "update  Mechanism set _ID =" + id.Text + ",_Name = '" + name.Text + "',_Meters = " + metr_count.Text + ",_Color = '" + color_length.Text + "',_Price =  " + price.Text;
+                        loaddata(q);
+                        ClearData();
+                        DataReader();
+
+                    }
+                    //update data to material
+                    if (this.comboBox1.SelectedIndex == 2)
+                    {
+
+                        string q = "update Expendable_Materials set _ID =" + id.Text + ",_Name = '" + name.Text + "',_Count = " + metr_count.Text + ",_Price = " + color_length.Text;
+                        loaddata(q);
+                        ClearData();
+                        DataReader();
+
+                    }
+                    //update data to shape
+                    if (this.comboBox1.SelectedIndex == 3)
+                    {
+
+                        string q = "update  Shape set _ID =" + id.Text + ",_Name = '" + name.Text + "',_Meters = " + metr_count.Text + ",_Color = '" + color_length.Text + "',_Price =  " + price.Text;
+                        loaddata(q);
+                        ClearData();
+                        DataReader();
+
+                    }
+                }
+
+                if (Update.Text != "Confirm")
+                    Update.Text = "Confirm";
+                else
+                {
+                    Update.Text = "Update";
+                    id.Text = name.Text = metr_count.Text = color_length.Text = price.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error 5\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //-------------------------------------------------------------------------------------------------------------------------
     }
 }
