@@ -45,6 +45,8 @@
             this.Password = new System.Windows.Forms.TextBox();
             this.Sing = new System.Windows.Forms.Button();
             this.Exit = new System.Windows.Forms.Button();
+            this.SqlQuery = new System.Windows.Forms.TextBox();
+            this.Execute = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -188,11 +190,33 @@
             this.Exit.UseVisualStyleBackColor = true;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
+            // SqlQuery
+            // 
+            this.SqlQuery.Location = new System.Drawing.Point(238, 54);
+            this.SqlQuery.Multiline = true;
+            this.SqlQuery.Name = "SqlQuery";
+            this.SqlQuery.Size = new System.Drawing.Size(219, 20);
+            this.SqlQuery.TabIndex = 15;
+            this.SqlQuery.Text = "You own sql query";
+            this.SqlQuery.Click += new System.EventHandler(this.SqlQuery_Click);
+            // 
+            // Execute
+            // 
+            this.Execute.Location = new System.Drawing.Point(473, 52);
+            this.Execute.Name = "Execute";
+            this.Execute.Size = new System.Drawing.Size(55, 23);
+            this.Execute.TabIndex = 16;
+            this.Execute.Text = "Execute";
+            this.Execute.UseVisualStyleBackColor = true;
+            this.Execute.Click += new System.EventHandler(this.Execute_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 407);
+            this.Controls.Add(this.Execute);
+            this.Controls.Add(this.SqlQuery);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.Sing);
             this.Controls.Add(this.Password);
@@ -238,6 +262,8 @@
         private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.Button Sing;
         private System.Windows.Forms.Button Exit;
+        private System.Windows.Forms.TextBox SqlQuery;
+        private System.Windows.Forms.Button Execute;
  
     }
 }
