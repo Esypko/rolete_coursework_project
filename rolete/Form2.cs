@@ -1124,7 +1124,7 @@ namespace rolete
         //-------------------------------------------------------------------------------------------------------------------------
         private void SqlQuery_Click(object sender, EventArgs e)
         {
-            SqlQuery.Text = "";
+            //SqlQuery.Text = "";-фігова тєма, коли треба внести запитами данні..а при наступному кліку мишкою воно пропадає;
         }
 
         private void Execute_Click(object sender, EventArgs e)
@@ -1140,6 +1140,11 @@ namespace rolete
             catch (Exception ex) {
                 MessageBox.Show("Error 7\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void SqlQuery_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            SqlQuery.Text = ""; // дблклк для очистки поля запиту;
         }
         
         //-------------------------------------------------------------------------------------------------------------------------
