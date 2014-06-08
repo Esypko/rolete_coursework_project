@@ -5,12 +5,16 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+<<<<<<< HEAD
 using System.Data.OleDb;
+=======
+>>>>>>> 1b36a317f885f5a2a5dc8cb9257402e7316dec49
 
 namespace rolete
 {
     public partial class Form3 : Form
     {
+<<<<<<< HEAD
         OleDbCommand cmd = new OleDbCommand();
         OleDbConnection cn = new OleDbConnection();
         int count = 0;
@@ -27,10 +31,22 @@ namespace rolete
         private void label2_Click(object sender, EventArgs e)
         {
 
+=======
+        
+        public string[] arr = new string[2];
+
+        public Form3()
+        {
+            InitializeComponent();
+
+
+            
+>>>>>>> 1b36a317f885f5a2a5dc8cb9257402e7316dec49
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             try
             {
                 if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "")
@@ -48,6 +64,21 @@ namespace rolete
             catch (Exception ex) {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+=======
+            if(arr[0]=="")
+            {
+                label1.Text = "Address";
+                arr[0] = textBox1.Text;
+                
+            }
+            if (arr[0] != "" && arr[1] == "")
+                {
+                    label1.Text = "Telephone";
+                    arr[1] = textBox1.Text;
+                this.Hide();
+                }
+            
+>>>>>>> 1b36a317f885f5a2a5dc8cb9257402e7316dec49
         }
     }
 }

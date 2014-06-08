@@ -199,6 +199,7 @@
             this.SqlQuery.TabIndex = 15;
             this.SqlQuery.Text = "You own sql query";
             this.SqlQuery.Click += new System.EventHandler(this.SqlQuery_Click);
+            this.SqlQuery.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.SqlQuery_MouseDoubleClick);
             // 
             // Execute
             // 
