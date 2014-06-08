@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+using System.Data.OleDb;
 
 namespace rolete
 {
@@ -23,6 +23,9 @@ namespace rolete
         private int minHeight               = 220;
         private int AW_HEIGHT               = 1;
         private Form2 form2                 = new Form2();
+        private Form4 form4 = new Form4();
+        OleDbCommand cmd = new OleDbCommand();
+        OleDbConnection cn = new OleDbConnection();
         public Form1()
         {
             try
@@ -64,6 +67,9 @@ namespace rolete
                 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
                 this.startTextBoxLocation = this.textBox1.Location.X;
+                string path = Environment.CurrentDirectory + "\\warehouse.accdb";
+                this.cn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + path + "';Persist Security Info=True";
+                cmd = cn.CreateCommand();
             }
             catch(Exception ex) {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -211,7 +217,15 @@ namespace rolete
 
         private void sSSSSSSSToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                form4 = new Form4();
+                form4.Visible = true;
+            }
+            catch (Exception ex) {
+                form4.Visible = true;
+                MessageBox.Show("Error 1\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Form1_Move(object sender, EventArgs e)
@@ -222,6 +236,39 @@ namespace rolete
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "")
+                {
+                    cn.Open();
+                    cmd.CommandText = "select * from Clients where [_Name] = '" + textBox5.Text + "'";
+                    cmd.ExecuteNonQuery();
+                    OleDbDataReader dr;
+                    dr = cmd.ExecuteReader();
+
+                    if (!dr.HasRows) {
+                        Form3 form3 = new Form3(textBox5.Text, Convert.ToInt32( textBox3.Text.ToString()));
+                        form3.Visible = true;
+                    }
+                    dr.Close();
+                }
+                
+                cn.Close();
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Errorasd\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cn.Close();
+
+            }
         }
     }
     class CustomProfessionalColors : ProfessionalColorTable
