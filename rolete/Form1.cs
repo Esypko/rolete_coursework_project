@@ -7,12 +7,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Data.OleDb;
-<<<<<<< HEAD
-=======
 using System.IO;
 
 
->>>>>>> 1b36a317f885f5a2a5dc8cb9257402e7316dec49
+
 
 namespace rolete
 {
@@ -21,19 +19,7 @@ namespace rolete
     {
         private bool mouseDown = false;
         private Point mouseLocation;
-<<<<<<< HEAD
-        private myGroupBox groupBox1        = new myGroupBox();
-        private myGroupBox groupBox2        = new myGroupBox();
-        private myGroupBox groupBox3        = new myGroupBox();
-        private int startTextBoxLocation    = 0;
-        private int maxHeight               = 440;
-        private int minHeight               = 220;
-        private int AW_HEIGHT               = 1;
-        private Form2 form2                 = new Form2();
-        private Form4 form4 = new Form4();
-        OleDbCommand cmd = new OleDbCommand();
-        OleDbConnection cn = new OleDbConnection();
-=======
+
         private myGroupBox groupBox1 = new myGroupBox();
         private myGroupBox groupBox2 = new myGroupBox();
         private myGroupBox groupBox3 = new myGroupBox();
@@ -41,21 +27,17 @@ namespace rolete
         private int maxHeight = 440;
         private int minHeight = 220;
         private int AW_HEIGHT = 1;
-        private OleDbCommand cmd = new OleDbCommand();
-        private OleDbConnection cn = new OleDbConnection();
-        private DataTable dt;
         private Form2 form2 = new Form2();
-        private Form3 form3 = new Form3();
->>>>>>> 1b36a317f885f5a2a5dc8cb9257402e7316dec49
+        private Form4 form4 = new Form4();
+        private Form3 form3;
+        OleDbCommand cmd = new OleDbCommand();
+        OleDbConnection cn = new OleDbConnection();
+
         public Form1()
         {
             try
             {
                 InitializeComponent();
-
-                string path = Environment.CurrentDirectory + "\\warehouse.accdb";
-                cn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + path + "';Persist Security Info=True";
-                cmd = cn.CreateCommand();
 
                 this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
                 this.comboBox1.SelectedIndex = 0;
@@ -64,7 +46,7 @@ namespace rolete
 
                 button1.FlatStyle = FlatStyle.Flat;
                 button1.FlatAppearance.BorderColor = this.BackColor;
-                button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(85,85,85);
+                button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(85, 85, 85);
 
                 this.menuStrip1.ForeColor = Color.White;
                 this.menuStrip1.Renderer = new ToolStripProfessionalRenderer(new CustomProfessionalColors());
@@ -262,7 +244,8 @@ namespace rolete
                 form4 = new Form4();
                 form4.Visible = true;
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 form4.Visible = true;
                 MessageBox.Show("Error 1\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -273,55 +256,22 @@ namespace rolete
             form2.Location = new Point(this.Location.X + this.Width, this.Location.Y);
         }
 
-        private void zak()
-        {
-            //cn.Open();
-            try
-            {
-                string q = "select [_Addres] from Clients where [_Name]= '" + textBox5.Text + "'";
-                cmd.CommandText = q;
-                cmd.ExecuteNonQuery();
-                OleDbDataReader dr;
-                dr = cmd.ExecuteReader();
-                if (!dr.HasRows)
-                {
-
-                    form3.Visible = true;
-           
-                    string c = "insert into Clients(_Name,_Telephone,_Addres) values('" + textBox5.Text + "','" + form3.arr[0] + "','" + form3.arr[1] + "')";
-                    cmd.CommandText = c;
-                    cmd.ExecuteNonQuery();
-                    dr.Close();
-                    //cn.Close();
-                }
-                dr.Close();
-            }
-            catch (Exception ex)
-            {
-
-                cn.Close();
-                MessageBox.Show("Капитан!\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
-<<<<<<< HEAD
+
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-=======
->>>>>>> 1b36a317f885f5a2a5dc8cb9257402e7316dec49
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-<<<<<<< HEAD
+
                 if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "")
                 {
                     cn.Open();
@@ -330,20 +280,16 @@ namespace rolete
                     OleDbDataReader dr;
                     dr = cmd.ExecuteReader();
 
-                    if (!dr.HasRows) {
-                        Form3 form3 = new Form3(textBox5.Text, Convert.ToInt32( textBox3.Text.ToString()));
+                    if (!dr.HasRows)
+                    {
+                        Form3 form3 = new Form3(textBox5.Text, Convert.ToInt32(textBox3.Text.ToString()));
                         form3.Visible = true;
                     }
                     dr.Close();
                 }
-                
-                cn.Close();
-            }
-            catch (Exception ex) {
-                MessageBox.Show("Errorasd\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 cn.Close();
 
-=======
                 if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "")
                 {
                     FileInfo file = new FileInfo("zvit.txt");
@@ -368,7 +314,7 @@ namespace rolete
                         dr.Close();
                         cmd.ExecuteNonQuery();
                         dr = cmd.ExecuteReader();
-                        
+
                         if (dr.HasRows)
                         {
                             string b = "select [_ID] from Mechanism where [_Name] =  '" + comboBox4.SelectedItem.ToString() + "'";
@@ -383,10 +329,9 @@ namespace rolete
                                 write_file.WriteLine(System.DateTime.Now.ToString());
                                 write_file.WriteLine("-----------------------------------------------------");
                                 MessageBox.Show("Updated " + System.DateTime.Now.ToString(), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                dr.Close();
-                               // zak();
+                                dr.Close();                               
                             }
-                            
+
                         }
                     }
                     else MessageBox.Show("Капитан, что-то пошло не так!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -396,10 +341,9 @@ namespace rolete
             }
             catch (Exception ex)
             {
-                
                 cn.Close();
                 MessageBox.Show("Капитан, что-то пошло не так!\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
->>>>>>> 1b36a317f885f5a2a5dc8cb9257402e7316dec49
+
             }
         }
     }
@@ -518,5 +462,5 @@ namespace rolete
             e.Graphics.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor), textRect);
         }
     }
-    
+
 }
